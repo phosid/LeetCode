@@ -1,9 +1,12 @@
 class Solution {
-    public int[] twoSum(int[] nums, int target) {
-        
-        //idea is to create a hashmap, and add in elements that has been iterated over with key: num, value: index
-        //constant time lookups O(1)
-        //recalculate the complement every time to see if the complement matches an element that is in hashmap
+    
+    //idea is to create a hashmap, and add in elements that has been iterated over with key: num, value: index
+    //constant time lookups O(1)
+    //recalculate the complement every time to see if the complement matches an element that is in hashmap
+    //O(n) time complexity because we have to iterate through the entire array
+    //O(n) space complexity because we create a hashmap to store n elements
+    
+    public int[] twoSum(int[] nums, int target) {     
         
         //create hashmap of Integer keys (numbers) and Integer values (index)
         HashMap<Integer, Integer> hm = new HashMap<>();
