@@ -5,7 +5,7 @@ class Solution {
     //O(n) time complexity because we have to iterate over the array of size n
     //O(n) space complexity because we have to create a hashmap of n elements
     
-    public int mjorityElement(int[] nums) {
+    public int majorityElement(int[] nums) {
         Map<Integer, Integer> hm = new HashMap<>();
         int majorityElement = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -20,4 +20,29 @@ class Solution {
         }
         throw new IllegalArgumentException();
     }
+    
+    
+    //we can also use the Boyer-Moore voting algorithm-- idea is to track the first element in the array as the majority candidate
+    //each time we see the candidate, we add to the count, and subtract if it's a different number from the candidate.
+    //if the count reaches 0, we switch over to a new candidate at that starting point where the count reaches 0.
+    //O(n) time complexity because we have to iterate over the n elements in the array
+    //O(1) space complexity, no new array or hashmap is needed to house the elements
+    
+    public int majorityElementUsingBoyerMoore(int[] nums) {
+        int count = 1;
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[index] == nums[i]) {
+                count++;
+            } else {
+                count--;
+            }
+            if (count == 0) {
+                index = i;
+                count = 1;
+            }
+        }
+        return nums[index];
+    }
+      
 }
